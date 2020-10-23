@@ -1,7 +1,7 @@
 [
     {
     "context": ["/w/**", "/api/**","/comments/**","/rest/**"],
-    "target": "https://uat4.styl.solutions/demo",
+    "target": "http://localhost:8080",
     "secure": false,
     "logLevel" : "debug"
     }

@@ -1,3 +1,4 @@
+import { ChartByUserService } from './dashboard-components/chart-by-user/chart-by-user.service';
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
@@ -10,6 +11,7 @@ import { WebsiteGraphComponent } from './dashboard-components/website-graph/webs
 import { CardsComponent } from './dashboard-components/cards/cards.component';
 import { ContactsComponent } from './dashboard-components/contacts/contacts.component';
 import { DeviceLogsComponent } from './dashboard-components/device-logs/device-logs.component';
+import { ChartByUserComponent } from './dashboard-components/chart-by-user/chart-by-user.component';
 // import { ProjectOfMonthComponent } from './dashboard-components/Overview/project-of-month.component';
 
 const routes: Routes = [
@@ -30,6 +32,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ChartsModule,
   ],
-  declarations: [DashboardComponent, SalesGraphComponent, VisitGraphComponent, WebsiteGraphComponent, CardsComponent, ContactsComponent, DeviceLogsComponent],
+  providers: [ChartByUserService],
+  declarations: [DashboardComponent, SalesGraphComponent, VisitGraphComponent, WebsiteGraphComponent, CardsComponent, ContactsComponent, DeviceLogsComponent, ChartByUserComponent],
 })
 export class DashboardModule {}

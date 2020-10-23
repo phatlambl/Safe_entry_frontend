@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "^10.0.2",
     "@angular/router": "^10.0.2",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "chartjs-color": "^2.4.1",
     "core-js": "^2.6.9",
     "cors": "^2.8.5",
