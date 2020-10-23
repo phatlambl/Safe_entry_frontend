@@ -1,0 +1,8 @@
+[
+    {
+    "context": ["/w/**", "/api/**","/comments/**","/rest/**"],
+    "target": "https://uat4.styl.solutions/demo",
+    "secure": false,
+    "logLevel" : "debug"
+    }
+]
