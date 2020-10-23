@@ -1,0 +1,22 @@
+<table border="1"> 
+    <tr>
+      <td>
+        userId
+      </td>
+      <td>name</td>
+      <td>temperature</td>
+      <td>timestamp</td>
+      <td>deviceId</td>
+      <td>location</td>
+    </tr>
+    <tr *ngFor="let item of data">
+      <td>
+        {{item.userId}}
+      </td>
+      <td>{{item.name}}</td>
+      <td>{{item.temperature}}</td>
+      <td>{{item.timestamp}}</td>
+      <td>{{item.deviceId}}</td>
+      <td>{{item.location}}</td>
+    </tr>
+    </table>
