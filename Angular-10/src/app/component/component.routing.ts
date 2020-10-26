@@ -1,3 +1,5 @@
+import { DeviceComponent } from './device/device.component';
+import { UserComponent } from './user/user.component';
 import { Routes } from '@angular/router';
 
 import { NgbdpregressbarBasicComponent } from './progressbar/progressbar.component';
@@ -16,6 +18,7 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { CardsComponent } from './card/card.component';
 import { ToastComponent } from './toast/toast.component';
 import {TemperatureSettingComponent} from './temperature-setting/temperature-setting.component';
+
 
 export const ComponentsRoutes: Routes = [
 	{
@@ -196,6 +199,20 @@ export const ComponentsRoutes: Routes = [
 					title: 'Setting',
 				}
 			},
+			{
+				path: 'user',
+				component: UserComponent,
+				data: {
+					title: '',
+				}
+			},
+			{
+				path: 'device',
+				component: DeviceComponent,
+				data: {
+					title: '',
+				}
+			}
 		]
 	}
 ];

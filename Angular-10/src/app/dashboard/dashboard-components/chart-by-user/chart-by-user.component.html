@@ -1,4 +1,20 @@
-<p>chart-by-user works!</p>
+<p> Temperature by </p>
+
+ <!-- select option time -->
+ <div> 
+    <select [(ngModel)]="selectedOption">
+       <option *ngFor="let o of options">
+          {{o.name}}
+       </option>
+    </select>
+    <button (click)="getTime()">Click me</button>
+    
+    <p>Selected option: {{ selectedOption }}</p>
+    <p>Button output: {{ printedOption }}</p>
+
+ </div>
+
+
 
 <div *ngIf="chart">
 <canvas id="canvas">{{ chart }}</canvas>

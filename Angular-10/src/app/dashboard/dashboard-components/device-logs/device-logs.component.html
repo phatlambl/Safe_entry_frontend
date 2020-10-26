@@ -9,6 +9,7 @@
     <th>timestamp</th>
     <th>deviceId</th>
     <th>location</th>
+    <th>&nbsp;</th>
   </tr>
   </thead>
 
@@ -18,9 +19,12 @@
     </td>
     <td>{{item.name}}</td>
     <td>{{item.temperature}}</td>
-    <td>{{item.timestamp}}</td>
+    <td>{{item.date}}</td>
     <td>{{item.deviceId}}</td>
     <td>{{item.location}}</td>
+    <td>
+      <a routerLink="/chart-by-user/{{item.userId}}" class="btn btn-primary" >View By Chart</a>
+    </td>
   </tr>
 </table>
 <nav aria-label="Page navigation example" class="mr-3">
@@ -30,3 +34,5 @@
     
   </ul>
 </nav>
+
+<router-outlet></router-outlet>

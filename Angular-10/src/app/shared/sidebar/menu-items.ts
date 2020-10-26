@@ -34,7 +34,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: [],
   },
   {
-    path: "",
+    path: "/component/user",
     title: "User",
     icon: "mdi mdi-equal",
     class: "",
@@ -42,7 +42,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: [],
   },
   {
-    path: "/component/alert",
+    path: "/component/device",
     title: "Device",
     icon: "mdi mdi-message-bulleted",
     class: "",

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+
+</head>
+<body>
+
+<h2>Add User</h2>
+
+<div class="col-md-4 flex justify-content-center" >
+  <form>
+    <div class="form-group">
+      <label>username</label>
+      <input type="text"  name="username" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label>password</label>
+      <input type="text"  name="password" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text"  name="name" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label>email</label>
+        <input type="text"  name="email" class="form-control"/>
+      </div>
+     <button class="btn btn-primary" >Add</button>
+    <!-- <button class="btn btn-primary" (click)="postData()">Add</button> -->
+  </form>
+</div>
+
+</body>
+</html>

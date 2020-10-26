@@ -22,19 +22,21 @@
 </head>
 <body>
 
-<h2>Temperature config</h2>
+<h2>Add Device</h2>
 
 <div class="col-md-4">
   <form>
     <div class="form-group">
-      <label>List email</label>
-      <input type="text" [(ngModel)]="emails" name="emails" class="form-control"/>
+      <label>DeviceId</label>
+      <input type="text"  name="deviceId" class="form-control"/>
     </div>
     <div class="form-group">
-      <label>Temperature config</label>
-      <input type="number" [(ngModel)]="temperature" name="temperature" class="form-control"/>
+      <label>Location</label>
+      <input type="text" name="location" class="form-control"/>
     </div>
-    <button class="btn btn-primary" (click)="postData()">Submit</button>
+    <button class="btn btn-primary" >Add</button>
+    <!-- <button class="btn btn-primary" (click)="postData()">Add</button> -->
+    
   </form>
 </div>
 
