@@ -22,6 +22,7 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { CardsComponent } from './card/card.component';
 import { ToastComponent } from './toast/toast.component';
 import { ToastsContainer } from './toast/toast-container';
+import { TemperatureSettingComponent } from './temperature-setting/temperature-setting.component';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { ToastsContainer } from './toast/toast-container';
     ButtonsComponent,
     CardsComponent,
     ToastComponent,
-    ToastsContainer
+    ToastsContainer,
+    TemperatureSettingComponent
   ]
 })
 export class ComponentsModule {}

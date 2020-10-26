@@ -21,12 +21,10 @@ export class ChartByUserComponent implements OnInit {
   constructor(private deviceLogByUser: ChartByUserService) { }
 
   ngOnInit(): void { 
-     this.deviceLogByUser.getDeviceLogsByUser().subscribe((data)=>{
-      console.log('data' ,data)            
 
-      
-  
-      
+     this.deviceLogByUser.getDeviceLogsByUser().subscribe((data)=>{
+      console.log('data' ,data)          
+
       var i;
       let temperature = [];
       let alldate =[]; 
@@ -35,21 +33,15 @@ export class ChartByUserComponent implements OnInit {
           temperature.push(data[i].temperature);
           alldate.push(data[i].timestamp);
       }
-
-           
+        
 
      
-      
-      // let temperature = map(data =>data[0].temperature)
-      // console.log("test" , temperature)
-
-      // let alldate = data.pipe(map(data => data.timestamp))
 
       
       let date = [] 
       alldate.forEach((data: number)=>{
         let jsdate = new Date(data*1000)
-        date.push(jsdate.toLocaleDateString('en', {year:'numeric',month:'short', day: 'numeric' }))
+        date.push(jsdate.toLocaleDateString('en', {month:'short' }))
        
       })
       this.chart = new Chart('canvas',{

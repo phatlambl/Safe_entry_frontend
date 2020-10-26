@@ -1,22 +1,32 @@
-<table border="1"> 
-    <tr>
-      <td>
-        userId
-      </td>
-      <td>name</td>
-      <td>temperature</td>
-      <td>timestamp</td>
-      <td>deviceId</td>
-      <td>location</td>
-    </tr>
-    <tr *ngFor="let item of data">
-      <td>
-        {{item.userId}}
-      </td>
-      <td>{{item.name}}</td>
-      <td>{{item.temperature}}</td>
-      <td>{{item.timestamp}}</td>
-      <td>{{item.deviceId}}</td>
-      <td>{{item.location}}</td>
-    </tr>
-    </table>
+<table border="1" class="table table-bordered">
+  <thead class="thead-light table-bordered">
+  <tr>
+    <th>
+      userId
+    </th>
+    <th>name</th>
+    <th>temperature</th>
+    <th>timestamp</th>
+    <th>deviceId</th>
+    <th>location</th>
+  </tr>
+  </thead>
+
+  <tr *ngFor="let item of data">
+    <td>
+      {{item.userId}}
+    </td>
+    <td>{{item.name}}</td>
+    <td>{{item.temperature}}</td>
+    <td>{{item.timestamp}}</td>
+    <td>{{item.deviceId}}</td>
+    <td>{{item.location}}</td>
+  </tr>
+</table>
+<nav aria-label="Page navigation example" class="mr-3">
+  <ul class="pagination">
+    <li class="page-item pr-1" [(ngModel)]="pageIndex"><button (click)="getPreviousPage()" class="btn btn-primary">previous</button></li>
+    <li class="page-item" [(ngModel)]="pageIndex"><button (click)="getNextPage()" class="btn btn-primary">next</button></li>
+    
+  </ul>
+</nav>
