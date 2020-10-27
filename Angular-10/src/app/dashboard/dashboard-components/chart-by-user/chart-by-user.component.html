@@ -1,21 +1,34 @@
-<p> Temperature by </p>
+<div class="col-md-10">
+   <p> Temperature by {{name}}</p>
 
- <!-- select option time -->
- <div> 
-    <select [(ngModel)]="selectedOption">
-       <option *ngFor="let o of options">
-          {{o.name}}
-       </option>
-    </select>
-    <button (click)="getTime()">Click me</button>
-    
-    <p>Selected option: {{ selectedOption }}</p>
-    <p>Button output: {{ printedOption }}</p>
+   <!-- select option time -->
+   <div> 
+      <select [(ngModel)]="selectedOption" ng-init="selectedOption = options[1].value">
+         <option *ngFor="let o of options">
+            {{o.name}}
+         </option>
+      </select>
+      <button (click)="getTime()">Select</button>
+      
+      <!-- <p>Selected option: {{ selectedOption }}</p> -->
+      <p>Time select: {{ printedOption }} ago</p>
+   </div>
+   <!-- 
+   <div class="col-md-2">
+      <div class="form-group">
+         <label>FromTimestamp</label>
+         <input type="date" [(ngModel)]="fromTimestamp" name="fromTimestamp" class="form-control"/>
+      </div>
+      <div class="form-group">
+         <label>toTimestamp</label>
+         <input type="date" [(ngModel)]="toTimestamp" name="toTimestamp" class="form-control"/>
+      </div>
+   </div> -->
 
- </div>
+   <div *ngIf="chart" >
+   <canvas id="canvas">{{ chart }}</canvas>
+   </div>
 
-
-
-<div *ngIf="chart">
-<canvas id="canvas">{{ chart }}</canvas>
 </div>
+
+

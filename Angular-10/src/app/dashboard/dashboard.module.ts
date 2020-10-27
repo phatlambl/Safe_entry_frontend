@@ -30,14 +30,15 @@ const routes: Routes = [
         }        
       },
       {
-        path:"chart-by-user/:id",
-        component: ChartByUserComponent,        
+        path:"chart-by-user",
+        component: ChartByUserComponent, 
+        data: {
+          title: "Dashboard",
+          urls: [{ title: "Chart", url: "/dashboard" }, { title: "Chart" }],
+        }          
       }
-    ]
-    
-    
-  }
- 
+    ]    
+  } 
 ];
 
 @NgModule({

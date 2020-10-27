@@ -17,7 +17,8 @@ export class ChartByUserComponent implements OnInit {
   chart: any= [];  
 
   userId: any
-  private subParam: Subscription;
+  name:any
+  public subParam: Subscription = new Subscription;
   fromTimestamp: any
   toTimestamp: any 
   d: any  
@@ -32,6 +33,7 @@ export class ChartByUserComponent implements OnInit {
    // funtion select option
    selectedOption: any
    printedOption: any
+   
 
 
   options = [
@@ -39,8 +41,10 @@ export class ChartByUserComponent implements OnInit {
     { name: "1 month", value: 30 },
     { name: "6 month", value: 30*6 }
   ]
-  getTime() {    
+  getTime() {   
     
+  this.printedOption = this.selectedOption;
+
    if(this.selectedOption === "1 week")
    {
     this.getTimestampXDayAgo(7)    
@@ -53,7 +57,9 @@ export class ChartByUserComponent implements OnInit {
    {
     this.getTimestampXDayAgo(30*6)
    }     
+   
    this.getChart() 
+   
   }
   
   //function get time x day from a current date
@@ -74,7 +80,7 @@ getTimestampXDayAgo(x: any){
 
 
   getDeviceLogsByUser(){
-    let getChart = "rest/device/list/user/temperature?" + this.userId + "&" + this.fromTimestamp + "&" + this.toTimestamp;
+    let getChart = "rest/device/list/user/temperature?userId=" + this.userId + "&fromTimestamp=" + this.fromTimestamp + "&toTimestamp=" + this.toTimestamp;
    return this.http.get(getChart).pipe(map(result => result));   
    }
 
@@ -94,7 +100,7 @@ getTimestampXDayAgo(x: any){
       }
         
       
-      let date: any [] 
+      let date: any = []; 
       alldate.forEach((data: number)=>{
       let jsdate = new Date(data*1000)
       date.push(jsdate.toLocaleDateString('en', {month:'short' }))
@@ -132,26 +138,24 @@ getTimestampXDayAgo(x: any){
 
   ngOnInit(): void { 
     //auto 7 day when access
-    this.subParam = this.activatedRouted.params.subscribe((params) =>{
-      this.userId = params.userId;
+    this.subParam = this.activatedRouted.queryParamMap.subscribe((params) =>{
+      this.userId = params.get('userId')
+      this.name = params.get('name')  
+      
     })
     this.getTimestampXDayAgo(7)
+    this.printedOption="1 week"
+    
+    
 
-    alert("UserId" + this.userId)
-    alert("from" + this.fromTimestamp)
-    alert("to" + this.toTimestamp)
+    // alert("UserId" + this.userId)
+    // alert("from" + this.fromTimestamp)
+    // alert("to" + this.toTimestamp)
     this.getChart()
      
   }
 
-  // ngOnInit(): void {
-
-  //   this.deviceLogs = this.svDeviceLogs.getListDeviceLogs().subscribe((data)=>{
-  //     console.log(data);
-  //     this.data=data;
-  //   })
-  // }
-
+ 
   
 
 }

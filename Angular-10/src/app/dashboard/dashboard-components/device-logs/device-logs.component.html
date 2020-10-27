@@ -23,7 +23,8 @@
     <td>{{item.deviceId}}</td>
     <td>{{item.location}}</td>
     <td>
-      <a routerLink="/chart-by-user/{{item.userId}}" class="btn btn-primary" >View By Chart</a>
+      <!-- <a routerLink="/dashboard/chart-by-user/{{item.userId}}" class="btn btn-primary" >View By Chart</a>       -->
+      <a routerLink="/dashboard/chart-by-user" [queryParams]="{userId:item.userId,name:item.name}" class="btn btn-primary" >View By Chart</a>  
     </td>
   </tr>
 </table>
