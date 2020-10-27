@@ -1,42 +1,53 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
 
-    td, th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
+<div class="offset-3 col-8">
+  <div class="offset-2 col-md-4" style="margin-bottom: 50px;">
+    <form>
+      <div class="form-group">
+        <label>Emails separate by ';'</label>
+        <input type="text" [(ngModel)]="emails" name="emails" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label>Temperature config</label>
+        <input type="number" [(ngModel)]="temperature" name="temperature" class="form-control"/>
+      </div>
+      <button class="btn btn-primary" (click)="postData()">Config</button>
+    </form>
+  </div>
+ 
+<div class="col-md-8">
+  <table border="1" class="table table-bordered mt-3">
+    <thead class=" table-bordered">
+    <tr style="background: #3CB371; color: #ECF0F1 " class="d-flex">
+      <th class="col-4">Id</th>
+      <th class="col-4">Email</th>
+      <th class="col-4">Max temperature</th>
+    </tr>
+    </thead>
+  
+    <tr *ngFor="let item of data" class="d-flex">
+      <td style="background: white" class="col-4">{{item.id}} </td>
+      <td class="col-4">{{item.email}}</td>
+      <td class="col-4">{{item.temperature.temperature}}</td>
+    </tr>
+  </table>
+  <nav aria-label="Page navigation example" style="position: absolute;
+    right: 20px" class="mr-3">
+    <ul class="pagination">
+      <li class="page-item pr-1" [(ngModel)]="pageIndex"><button (click)="getPreviousPage()" class="btn btn-primary">previous</button></li>
+      <li class="page-item" [(ngModel)]="pageIndex"><button (click)="getNextPage()" class="btn btn-primary">next</button></li>
+    </ul>
+  </nav>
 
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
-  </style>
-
-</head>
-<body>
-
-<h2>Temperature config</h2>
-
-<div class="col-md-4">
-  <form>
-    <div class="form-group">
-      <label>List email</label>
-      <input type="text" [(ngModel)]="emails" name="emails" class="form-control"/>
-    </div>
-    <div class="form-group">
-      <label>Temperature config</label>
-      <input type="number" [(ngModel)]="temperature" name="temperature" class="form-control"/>
-    </div>
-    <button class="btn btn-primary" (click)="postData()">Submit</button>
-  </form>
 </div>
 
-</body>
-</html>
+</div>
+  
+    
+  
+
+ 
+     
+        
+     
+
+

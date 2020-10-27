@@ -1,3 +1,4 @@
+import { filter } from 'rxjs/operators';
 import { Data } from '@angular/router';
 import {DeviceLogServiceService} from './device-log-service.service';
 import {HttpClient} from '@angular/common/http';
@@ -20,16 +21,26 @@ export class DeviceLogsComponent implements OnInit {
   leftList: any;
   rightList: any;
   pageIndex1: any;
+  filter: boolean=false;
 
   constructor(private svDeviceLogs: DeviceLogServiceService, private http: HttpClient) {
   }
 
   ngOnInit(): void {
+    const url = '/rest/device/list/log';
 
-    this.deviceLogs = this.svDeviceLogs.getListDeviceLogs().subscribe((response) => {
-      console.log(response);    
+    const Observable = this.http.get(url).subscribe((response) => {
+      console.log(response);
       this.convertTimeToDate(response)
     });
+    
+  }
+  showHideFilter(){
+    if(this.filter){
+      this.filter=false
+    }else{
+      this.filter=true
+    }
     
   }
 
@@ -44,7 +55,7 @@ export class DeviceLogsComponent implements OnInit {
         temp.temperature = data.temperature;
         temp.deviceId = data.deviceId;
         temp.location = data.location;
-        let jsdate = new Date(data.timestamp*1000)
+        let jsdate = new Date(data.timestamp)
         temp.date= jsdate.toLocaleDateString('en')
         console.log(temp);    
         myArray.push(temp)
@@ -54,7 +65,7 @@ export class DeviceLogsComponent implements OnInit {
   }
 
   getPreviousPage() {
-    const url = '/rest/device/list?page=';
+    const url = '/rest/device/list/log?page=';
     if (this.count > 1) {
       this.count--;
     }
@@ -66,7 +77,7 @@ export class DeviceLogsComponent implements OnInit {
   }
 
   getNextPage() {
-    const url = '/rest/device/list?page=';
+    const url = '/rest/device/list/log?page=';
     this.count++;
     const Observable = this.http.get(url + (this.count)).subscribe((response) => {
       this.convertTimeToDate(response)

@@ -25,7 +25,7 @@ const routes: Routes = [
 				path: '',
 				component: DashboardComponent,
 				data: {
-          title: "Dashboard",
+          title: "Overview",
           urls: [{ title: "Dashboard", url: "/dashboard" }, { title: "Dashboard" }],
         }        
       },
@@ -33,7 +33,7 @@ const routes: Routes = [
         path:"chart-by-user",
         component: ChartByUserComponent, 
         data: {
-          title: "Dashboard",
+          title: "Overview",
           urls: [{ title: "Chart", url: "/dashboard" }, { title: "Chart" }],
         }          
       }

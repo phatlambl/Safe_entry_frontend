@@ -53,9 +53,9 @@ export class ChartByUserComponent implements OnInit {
    {
     this.getTimestampXDayAgo(30)  
    }
-   if(this.selectedOption === "6 week")
+   if(this.selectedOption === "6 month")
    {
-    this.getTimestampXDayAgo(30*6)
+    this.getTimestampXDayAgo(180)
    }     
    
    this.getChart() 
@@ -80,21 +80,19 @@ getTimestampXDayAgo(x: any){
 
 
   getDeviceLogsByUser(){
-    let getChart = "rest/device/list/user/temperature?userId=" + this.userId + "&fromTimestamp=" + this.fromTimestamp + "&toTimestamp=" + this.toTimestamp;
+    let getChart = "rest/device/list/user?userId=" + this.userId + "&fromTimestamp=" + this.fromTimestamp + "&toTimestamp=" + this.toTimestamp;
    return this.http.get(getChart).pipe(map(result => result));   
    }
 
    //get chart
    getChart(){    
-    this.getDeviceLogsByUser().subscribe((data)=>{
-      console.log('data' ,data)          
+    this.getDeviceLogsByUser().subscribe((data)=>{                 
       let result: any=data;
 
       var i;
       let temperature = [];
       let alldate: any =[]; 
-      for (i = 0; i < result.length; i++) {
-          console.log(result[i].temperature)
+      for (i = 0; i < result.length; i++) {          
           temperature.push(result[i].temperature);
           alldate.push(result[i].timestamp);
       }
@@ -102,8 +100,8 @@ getTimestampXDayAgo(x: any){
       
       let date: any = []; 
       alldate.forEach((data: number)=>{
-      let jsdate = new Date(data*1000)
-      date.push(jsdate.toLocaleDateString('en', {month:'short' }))
+      let jsdate = new Date(data)
+      date.push(jsdate.toLocaleDateString('en', {year:'numeric', month:'short', day:'numeric' } ))
        
       })
       this.chart = new Chart('canvas',{
@@ -125,6 +123,15 @@ getTimestampXDayAgo(x: any){
           scales: {
             xAxes:[{
               display: true
+              
+                // type: 'time',
+                // position: 'bottom',
+                // time: {
+                //   displayFormats: {'day': 'MM/YY'},
+                //   tooltipFormat: 'DD/MM/YY',
+                //   unit: 'month',
+                //  }
+            
             }],
             yAxes:[{
               display: true
@@ -155,7 +162,7 @@ getTimestampXDayAgo(x: any){
      
   }
 
- 
+
   
 
 }

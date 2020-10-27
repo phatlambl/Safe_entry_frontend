@@ -11,7 +11,7 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: "/dashboard",
-    title: "Dashboard",
+    title: "Overview",
     icon: "mdi mdi-gauge",
     class: "",
     extralink: false,
@@ -26,7 +26,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: [],
   },
   {
-    path: "/component/card",
+    path: "/component/setting",
     title: "Setting",
     icon: "mdi mdi-blur-radial",
     class: "",

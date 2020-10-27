@@ -1,51 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
+<div class="offset-2 col-8">
+  <div style="float: right;margin-bottom: 20px;"><button class="btn btn-primary" >Add User</button></div>
 
-    td, th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
+  <table border="1" class="table table-bordered">
+    <thead class="table-bordered">
+    <tr style="background: #3CB371; color: #ECF0F1 " class="d-flex">
+      <th class="col-3">
+        UUID
+      </th>
+      <th class="col-3">Name</th>
+      <th class="col-3">Email</th>
+      <th class="col-3">&nbsp;</th>
+    </tr>
+    </thead>
+    <tr *ngFor="let item of data" class="d-flex">
+      <td style="background: white;size: 3px" class="col-3">{{item.id}} </td>
+      <td style="background: white" class="col-3">{{item.name}}</td>
+      <td style="background: white" class="col-3">{{item.email}}</td>
+      <td class="col-4">
+          <button class="btn btn-primary">Edit</button> |
+        <button class="btn btn-primary">Delete</button>
+     </td>
+    </tr>
+  </table>
+  <nav aria-label="Page navigation example"  class="mr-3">
+    <ul class="pagination">
+      <li class="page-item pr-1" [(ngModel)]="pageIndex"><button (click)="getPreviousPage()" class="btn btn-primary rounded p-1">previous</button></li>
+      <li class="page-item" [(ngModel)]="pageIndex"><button (click)="getNextPage()" class="btn btn-primary rounded p-1">next</button></li>
+    </ul>
+  </nav>
 
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
-  </style>
-
-</head>
-<body>
-
-<h2>Add User</h2>
-
-<div class="col-md-4 flex justify-content-center" >
-  <form>
-    <div class="form-group">
-      <label>username</label>
-      <input type="text"  name="username" class="form-control"/>
-    </div>
-    <div class="form-group">
-      <label>password</label>
-      <input type="text"  name="password" class="form-control"/>
-    </div>
-    <div class="form-group">
-        <label>Name</label>
-        <input type="text"  name="name" class="form-control"/>
-      </div>
-      <div class="form-group">
-        <label>email</label>
-        <input type="text"  name="email" class="form-control"/>
-      </div>
-     <button class="btn btn-primary" >Add</button>
-    <!-- <button class="btn btn-primary" (click)="postData()">Add</button> -->
-  </form>
 </div>
 
-</body>
-</html>

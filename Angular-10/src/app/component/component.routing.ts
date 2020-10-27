@@ -37,14 +37,14 @@ export const ComponentsRoutes: Routes = [
 				}
 			},
 			{
-				path: 'card',
+				path: 'setting',
 				component: TemperatureSettingComponent,
 				data: {
-					title: 'Cards',
+					title: 'Setting',
 					urls: [
 						{ title: 'Dashboard', url: '/dashboard' },
 						{ title: 'ngComponent' },
-						{ title: 'Cards' }
+						{ title: 'Setting' }
 					]
 				}
 			},
@@ -193,10 +193,10 @@ export const ComponentsRoutes: Routes = [
 				}
 			},
 			{
-				path: 'toast',
+				path: 'setting',
 				component: TemperatureSettingComponent,
 				data: {
-					title: 'Setting',
+					title: '',
 				}
 			},
 			{
