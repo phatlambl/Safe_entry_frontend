@@ -31,32 +31,26 @@
 
 </div>
 
-<table border="1" class="table table-bordered">
+<table border="1" class="table table-bordered" style="text-align: center;">
   <thead class="thead-light table-bordered">
-  <tr class="d-flex">
-    <th class="col-2">
-      userId
-    </th>
-    <th class="col-3">Name</th>
-    <th class="col-2">Temperature</th>
-    <th class="col-2">Date</th>
-    <th class="col-2">DeviceId</th>
-    <th class="col-2">Location</th>
-    <th class="col-2">&nbsp;</th>
+  <tr >
+    <th >userId</th>
+    <th >Name</th>
+    <th >Temperature</th>
+    <th >Date</th>
+    <th >DeviceId</th>
+    <th >Location</th>
+    <th >&nbsp;</th>
   </tr>
   </thead>
-
-  <tr *ngFor="let item of data" class="d-flex">
-    <td class="col-2">
-      {{item.userId}}
-    </td>
-    <td class="col-3">{{item.name}}</td>
-    <td class="col-2">{{item.temperature}}</td>
-    <td class="col-2">{{item.date}}</td>
-    <td class="col-2">{{item.deviceId}}</td>
-    <td class="col-2">{{item.location}}</td>
-    <td class="col-2"> 
-      <!-- <a routerLink="/dashboard/chart-by-user/{{item.userId}}" class="btn btn-primary" >View By Chart</a>       -->
+  <tr *ngFor="let item of data">
+    <td >{{item.userId}}</td>
+    <td >{{item.name}}</td>
+    <td >{{item.temperature}}</td>
+    <td >{{item.date}}</td>
+    <td >{{item.deviceId}}</td>
+    <td >{{item.location}}</td>
+    <td >       
       <a routerLink="/dashboard/chart-by-user" [queryParams]="{userId:item.userId,name:item.name}" class="btn btn-primary" >Detail</a>  
     </td>
   </tr>
@@ -64,8 +58,7 @@
 <nav aria-label="Page navigation example" class="mr-3">
   <ul class="pagination">
     <li class="page-item pr-1" [(ngModel)]="pageIndex"><button (click)="getPreviousPage()" class="btn btn-primary">previous</button></li>
-    <li class="page-item" [(ngModel)]="pageIndex"><button (click)="getNextPage()" class="btn btn-primary">next</button></li>
-    
+    <li class="page-item" [(ngModel)]="pageIndex"><button (click)="getNextPage()" class="btn btn-primary">next</button></li>    
   </ul>
 </nav>
 

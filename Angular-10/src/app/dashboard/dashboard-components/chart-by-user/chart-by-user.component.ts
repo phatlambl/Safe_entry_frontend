@@ -39,7 +39,7 @@ export class ChartByUserComponent implements OnInit {
   options = [
     { name: "1 week", value: 7 },
     { name: "1 month", value: 30 },
-    { name: "6 month", value: 30*6 }
+    { name: "6 month", value: 180 }
   ]
   getTime() {   
     

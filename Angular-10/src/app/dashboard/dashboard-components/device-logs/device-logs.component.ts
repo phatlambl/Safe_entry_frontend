@@ -45,6 +45,7 @@ export class DeviceLogsComponent implements OnInit {
   }
 
   convertTimeToDate(response: any){
+    
     let myArray: any =[];      
       response.forEach((data: any)=>{ 
 
@@ -56,7 +57,8 @@ export class DeviceLogsComponent implements OnInit {
         temp.deviceId = data.deviceId;
         temp.location = data.location;
         let jsdate = new Date(data.timestamp)
-        temp.date= jsdate.toLocaleDateString('en')
+        temp.date= jsdate.toLocaleString()       
+      
         console.log(temp);    
         myArray.push(temp)
       })
