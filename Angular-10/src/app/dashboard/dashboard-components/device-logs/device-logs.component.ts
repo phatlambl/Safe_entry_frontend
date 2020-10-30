@@ -107,7 +107,7 @@ export class DeviceLogsComponent implements OnInit {
 
   search() {
     // tslint:disable-next-line:max-line-length
-    if (this.temperature === undefined) {
+    if (this.temperature === undefined || this.temperature === null) {
       this.temperature = 0;
     }
     if (this.fromDate !== undefined) {
@@ -138,12 +138,4 @@ export class DeviceLogsComponent implements OnInit {
   }
 }
 
-export interface temp {
-  userId: any;
-  name: any;
-  temperature: any;
-  deviceId: any;
-  location: any;
-  date: any;
-  time: any;
-}
+
