@@ -1,7 +1,7 @@
 import { Approutes } from './../app-routing.module';
 import { Title } from '@angular/platform-browser';
-import { ChartByUserService } from './dashboard-components/chart-by-user/chart-by-user.service';
 import { NgModule } from "@angular/core";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { Routes, RouterModule } from "@angular/router";
@@ -25,7 +25,7 @@ const routes: Routes = [
 				path: '',
 				component: DashboardComponent,
 				data: {
-          title: "Overview",
+          title: "",
           urls: [{ title: "Dashboard", url: "/dashboard" }, { title: "Dashboard" }],
         }        
       },
@@ -33,7 +33,7 @@ const routes: Routes = [
         path:"chart-by-user",
         component: ChartByUserComponent, 
         data: {
-          title: "Overview",
+          title: "",
           urls: [{ title: "Chart", url: "/dashboard" }, { title: "Chart" }],
         }          
       }
@@ -47,8 +47,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ChartsModule,    
-  ],
-  providers: [ChartByUserService],
+    NgbModule
+  ], 
   exports:[ChartByUserComponent],
   declarations: [DashboardComponent, SalesGraphComponent, VisitGraphComponent, WebsiteGraphComponent, CardsComponent, ContactsComponent, DeviceLogsComponent, ChartByUserComponent],
 })

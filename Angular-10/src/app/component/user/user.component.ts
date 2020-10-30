@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from './../../../environments/environment.prod';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpResponse, HttpHeaders} from '@angular/common/http';
 @Component({
@@ -9,12 +10,13 @@ import {HttpClient, HttpResponse, HttpHeaders} from '@angular/common/http';
 export class UserComponent implements OnInit {
   pageIndex: any;
   count = 0;
+  projectName = "demo"
 
   constructor(private http: HttpClient) { }
   public data: Object = [];
   ngOnInit(): void {
     const url = '/rest/user/list';
-    this.data = this.http.get(url).toPromise().then((data: any) => {
+    this.data = this.http.get(environment.endpoint + url).toPromise().then((data: any) => {
       console.log('user list: ', data);
       this.data = data;
     });
@@ -26,7 +28,7 @@ export class UserComponent implements OnInit {
     if (this.count >= 1) {
       this.count--;
     }
-    this.http.get(url + (this.count)).toPromise().then((data: any) => {
+    this.http.get(environment.endpoint + url + (this.count)).toPromise().then((data: any) => {
       this.data = data;
     });
   }
@@ -34,7 +36,7 @@ export class UserComponent implements OnInit {
   getNextPage() {
     const url = '/rest/user/list?page=';
     this.count++;
-    this.http.get(url + (this.count)).toPromise().then((data: any) => {
+    this.http.get(environment.endpoint + url + (this.count)).toPromise().then((data: any) => {
       if (data.length === 0) {
         this.count--;
       }

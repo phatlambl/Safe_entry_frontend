@@ -1,10 +1,10 @@
 import { ActivatedRoute } from '@angular/router';
-import { ChartByUserService } from './chart-by-user.service';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {Chart} from 'chart.js'
 import { map } from "rxjs/operators";
+import { environment } from './../../../../environments/environment.prod';
 
 
 @Component({
@@ -23,9 +23,10 @@ export class ChartByUserComponent implements OnInit {
   toTimestamp: any 
   d: any  
   public data: Object = [];
+  projectName = "demo"
 
 
-  constructor(private deviceLogByUser: ChartByUserService, private http: HttpClient,
+  constructor(private http: HttpClient,
               private activatedRouted:ActivatedRoute) { }
   
   private listDeviceLogByUser = new Subscription(); 
@@ -80,8 +81,8 @@ getTimestampXDayAgo(x: any){
 
 
   getDeviceLogsByUser(){
-    let getChart = "rest/device/list/user?userId=" + this.userId + "&fromTimestamp=" + this.fromTimestamp + "&toTimestamp=" + this.toTimestamp;
-   return this.http.get(getChart).pipe(map(result => result));   
+    let getChart = "/rest/device/list/user?userId=" + this.userId + "&fromTimestamp=" + this.fromTimestamp + "&toTimestamp=" + this.toTimestamp;
+   return this.http.get(environment.endpoint + getChart).pipe(map(result => result));   
    }
 
    //get chart

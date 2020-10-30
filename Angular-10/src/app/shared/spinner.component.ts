@@ -1,3 +1,4 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {
   Component,
   Input,
@@ -13,6 +14,7 @@ import {
   NavigationError
 } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
+
 
 @Component({
   selector: 'app-spinner',

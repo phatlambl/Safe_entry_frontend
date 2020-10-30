@@ -2,6 +2,7 @@ import {TemperatureSettingServiceService} from './temperature-setting-service.se
 import {HttpClient} from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
+import { environment } from './../../../environments/environment.prod';
 
 @Component({
   selector: 'app-temperature-setting',
@@ -23,7 +24,7 @@ export class TemperatureSettingComponent implements OnInit {
   postData() {
     const url = '/rest/temperature/config';
     const url_list = '/rest/temperature/config/list';
-    this.http.post(url, {emails: this.emails, temperature: this.temperature}).toPromise().then((data: any) => {
+    this.http.post(environment.endpoint + url, {emails: this.emails, temperature: this.temperature}).toPromise().then((data: any) => {
       console.log('post status: ', data);
       if (data.statusCode === 200) {
         this.http.get(url_list).toPromise().then((data_: any) => {
@@ -36,7 +37,7 @@ export class TemperatureSettingComponent implements OnInit {
 
   ngOnInit(): void {
     const url = '/rest/temperature/config/list';
-    this.data = this.http.get(url).toPromise().then((data: any) => {
+    this.data = this.http.get(environment.endpoint + url).toPromise().then((data: any) => {
       console.log('user list: ', data.content);
       this.data = data.content;
     });
@@ -47,7 +48,7 @@ export class TemperatureSettingComponent implements OnInit {
     if (this.count >= 1) {
       this.count--;
     }
-    this.http.get(url + (this.count)).toPromise().then((data: any) => {
+    this.http.get(environment.endpoint + url + (this.count)).toPromise().then((data: any) => {
       this.data = data.content;
     });
   }
@@ -55,7 +56,7 @@ export class TemperatureSettingComponent implements OnInit {
   getNextPage() {
     const url = '/rest/temperature/config/list?page=';
     this.count++;
-    this.http.get(url + (this.count)).toPromise().then((data: any) => {
+    this.http.get(environment.endpoint + url + (this.count)).toPromise().then((data: any) => {
       if (data.content.length === 0) {
         this.count--;
       }

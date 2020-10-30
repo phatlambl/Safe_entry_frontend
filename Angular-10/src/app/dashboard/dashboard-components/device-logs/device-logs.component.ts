@@ -1,9 +1,12 @@
+import { environment } from './../../../../environments/environment.prod';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { filter } from 'rxjs/operators';
 import { Data } from '@angular/router';
 import {DeviceLogServiceService} from './device-log-service.service';
 import {HttpClient} from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
+
 
 
 @Component({
@@ -23,13 +26,15 @@ export class DeviceLogsComponent implements OnInit {
   pageIndex1: any;
   filter: boolean=false;
 
+  
+
   constructor(private svDeviceLogs: DeviceLogServiceService, private http: HttpClient) {
   }
 
   ngOnInit(): void {
     const url = '/rest/device/list/log';
 
-    const Observable = this.http.get(url).subscribe((response) => {
+    const Observable = this.http.get(environment.endpoint + url).subscribe((response) => {
       console.log(response);
       this.convertTimeToDate(response)
     });
@@ -57,7 +62,8 @@ export class DeviceLogsComponent implements OnInit {
         temp.deviceId = data.deviceId;
         temp.location = data.location;
         let jsdate = new Date(data.timestamp)
-        temp.date= jsdate.toLocaleString()       
+        temp.date = jsdate.toLocaleDateString()
+        temp.time = jsdate.toLocaleTimeString()    
       
         console.log(temp);    
         myArray.push(temp)
@@ -71,7 +77,7 @@ export class DeviceLogsComponent implements OnInit {
     if (this.count > 1) {
       this.count--;
     }
-    const Observable = this.http.get(url + (this.count)).subscribe((response) => {
+    const Observable = this.http.get(environment.endpoint + url + (this.count)).subscribe((response) => {
       console.log(response);
       this.convertTimeToDate(response)
     });
@@ -81,7 +87,7 @@ export class DeviceLogsComponent implements OnInit {
   getNextPage() {
     const url = '/rest/device/list/log?page=';
     this.count++;
-    const Observable = this.http.get(url + (this.count)).subscribe((response) => {
+    const Observable = this.http.get(environment.endpoint + url + (this.count)).subscribe((response) => {
       this.convertTimeToDate(response)
     });   
   }  
@@ -94,5 +100,6 @@ export interface temp {
   temperature: any,
   deviceId: any,
   location: any,
-  date: any
+  date: any,
+  time: any
 }

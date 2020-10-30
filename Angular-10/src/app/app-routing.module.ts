@@ -24,10 +24,11 @@ export const Approutes: Routes = [
         loadChildren: () => import('./component/component.module').then(m => m.ComponentsModule)
       }
     ]
-  },
-  
-  {
-    path: '**',
-    redirectTo: '/access'
   }
+  // ,
+  
+  // {
+  //   path: '**',
+  //   redirectTo: '/access'
+  // }
 ];

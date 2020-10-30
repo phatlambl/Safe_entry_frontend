@@ -40,7 +40,7 @@ export const ComponentsRoutes: Routes = [
 				path: 'setting',
 				component: TemperatureSettingComponent,
 				data: {
-					title: 'Setting',
+					title: '',
 					urls: [
 						{ title: 'Dashboard', url: '/dashboard' },
 						{ title: 'ngComponent' },

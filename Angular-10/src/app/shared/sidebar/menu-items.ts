@@ -3,7 +3,7 @@ import { RouteInfo } from "./sidebar.metadata";
 export const ROUTES: RouteInfo[] = [
   {
     path: "",
-    title: "Personal",
+    title: "Overview",
     icon: "mdi mdi-dots-horizontal",
     class: "nav-small-cap",
     extralink: true,
@@ -19,7 +19,7 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: "",
-    title: "UI Components",
+    title: "Components",
     icon: "mdi mdi-dots-horizontal",
     class: "nav-small-cap",
     extralink: true,
