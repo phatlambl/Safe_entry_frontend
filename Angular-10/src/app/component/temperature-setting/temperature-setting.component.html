@@ -1,53 +1,60 @@
+<div style="margin-bottom: 100px;" class="offset-4 col-md-4">
+  <form>
+    <div class="form-group">
+      <label>Emails separate by ';'</label>
+      <input type="text" [(ngModel)]="emails" name="emails" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label>Temperature config</label>
+      <input type="number" [(ngModel)]="temperature" name="temperature" class="form-control"/>
+    </div>
+    <button class="btn btn-primary" (click)="postData()" style="float: right;margin-bottom: 20px;">Config</button>
+  </form>
+</div>
 
+<div>
+  <div>
+    <table border="1" class="table table-bordered mt-3" style="text-align: center;">
+      <thead class=" table-bordered">
+      <tr style="background: #3CB371; color: #ECF0F1 ">
+        <th>Id</th>
+        <th>Email</th>
+        <th>Max temperature</th>
+      </tr>
+      </thead>
 
-  <div style="margin-bottom: 100px;" class="offset-4 col-md-4">
-    <form>
-      <div class="form-group">
-        <label>Emails separate by ';'</label>
-        <input type="text" [(ngModel)]="emails" name="emails" class="form-control"/>
-      </div>
-      <div class="form-group">
-        <label>Temperature config</label>
-        <input type="number" [(ngModel)]="temperature" name="temperature" class="form-control"/>
-      </div>
-      <button class="btn btn-primary" (click)="postData()" style="float: right;margin-bottom: 20px;">Config</button>
-    </form>
+      <tr *ngFor="let item of data">
+        <td style="background: white">{{item.id}} </td>
+        <td>{{item.email}}</td>
+        <td>{{item.temperature.temperature}}</td>
+      </tr>
+    </table>
+    <nav aria-label="Page navigation example" class="mr-3">
+      <ul class="pagination">
+        <li class="page-item pr-1" [(ngModel)]="pageIndex">
+          <button (click)="getPreviousPage()" class="btn btn-primary rounded p-1">previous</button>
+        </li>
+        <li class="page-item mr-1" [(ngModel)]="pageIndex">
+          <button (click)="getNextPage()" class="btn btn-primary rounded p-1">next</button>
+        </li>
+        <li class="page-item">
+          <button class="btn btn-primary rounded p-1">{{total}}</button>
+        </li>
+      </ul>
+    </nav>
   </div>
- 
-<div >
-  <table border="1" class="table table-bordered mt-3" style="text-align: center;">
-    <thead class=" table-bordered">
-    <tr style="background: #3CB371; color: #ECF0F1 " >
-      <th >Id</th>
-      <th >Email</th>
-      <th >Max temperature</th>
-    </tr>
-    </thead>
-  
-    <tr *ngFor="let item of data" >
-      <td style="background: white" >{{item.id}} </td>
-      <td >{{item.email}}</td>
-      <td >{{item.temperature.temperature}}</td>
-    </tr>
-  </table>
-  <nav aria-label="Page navigation example" style="position: absolute;
-    right: 20px" class="mr-3">
-    <ul class="pagination">
-      <li class="page-item pr-1" [(ngModel)]="pageIndex"><button (click)="getPreviousPage()" class="btn btn-primary">previous</button></li>
-      <li class="page-item" [(ngModel)]="pageIndex"><button (click)="getNextPage()" class="btn btn-primary">next</button></li>
-    </ul>
-  </nav>
+
 
 </div>
 
 
-  
-    
-  
 
- 
-     
-        
-     
+
+
+
+
+
+
+
 
 

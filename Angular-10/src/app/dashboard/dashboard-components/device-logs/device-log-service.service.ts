@@ -9,28 +9,28 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class DeviceLogServiceService {
 
-  readonly api:any ={
-    getListDeviceLogs: "/rest/device/list"
+  readonly api: any = {
+    getListDeviceLogs: '/rest/device/list/log'
+  };
+
+  constructor(private http: HttpClient) {
   }
 
-  constructor(private http:HttpClient) { 
-  }  
-  
   getListDeviceLogs(): Observable<any> {
-    let Observable = this.http.get(this.api.getListDeviceLogs) 
+    const Observable = this.http.get(this.api.getListDeviceLogs);
       return Observable;
   }
 
 
   // private handleError<T>(operation = 'operation', result?: T) {
   //   return (error: any): Observable<T> => {
-  
+
   //     // TODO: send the error to remote logging infrastructure
   //     console.error(error); // log to console instead
-  
+
   //     // TODO: better job of transforming error for user consumption
   //     this.log(`${operation} failed: ${error.message}`);
-  
+
   //     // Let the app keep running by returning an empty result.
   //     return of(result as T);
   //   };

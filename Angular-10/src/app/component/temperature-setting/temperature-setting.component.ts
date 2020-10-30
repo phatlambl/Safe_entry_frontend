@@ -17,6 +17,7 @@ export class TemperatureSettingComponent implements OnInit {
   pageIndex: any;
   count = 0;
   public data: Object = [];
+  total: any;
 
   constructor(private http: HttpClient) {
   }
@@ -28,39 +29,43 @@ export class TemperatureSettingComponent implements OnInit {
       console.log('post status: ', data);
       if (data.statusCode === 200) {
         this.http.get(url_list).toPromise().then((data_: any) => {
-          console.log('user list: ', data_.content);
-          this.data = data_.content;
+          console.log('user list: ', data_.data);
+          this.data = data_.data;
         });
       }
     });
+
   }
 
   ngOnInit(): void {
     const url = '/rest/temperature/config/list';
     this.data = this.http.get(environment.endpoint + url).toPromise().then((data: any) => {
-      console.log('user list: ', data.content);
-      this.data = data.content;
+      console.log('user list: ', data.data);
+      this.data = data.data;
+    });
+    const url_count = '/rest/temperature/config/list?countOnly=Y';
+    this.http.get(environment.endpoint + url_count).toPromise().then((data: any) => {
+      console.log('count: ', data);
+      this.total = data.totalCount;
     });
   }
-
   getPreviousPage() {
     const url = '/rest/temperature/config/list?page=';
     if (this.count >= 1) {
       this.count--;
     }
     this.http.get(environment.endpoint + url + (this.count)).toPromise().then((data: any) => {
-      this.data = data.content;
+      this.data = data.data;
     });
   }
-
   getNextPage() {
     const url = '/rest/temperature/config/list?page=';
     this.count++;
     this.http.get(environment.endpoint + url + (this.count)).toPromise().then((data: any) => {
-      if (data.content.length === 0) {
+      if (data.data.length === 0) {
         this.count--;
       }
-      this.data = data.content;
+      this.data = data.data;
     });
   }
 }

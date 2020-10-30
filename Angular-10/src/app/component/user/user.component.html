@@ -1,6 +1,5 @@
 <div>
   <div style="float: right;margin-bottom: 20px;"><button class="btn btn-primary" >Add User</button></div>
-
   <table border="1" class="table table-bordered" style="text-align: center;">
     <thead class="table-bordered">
     <tr style="background: #3CB371; color: #ECF0F1 "class="d-flex">
@@ -25,9 +24,9 @@
   <nav aria-label="Page navigation example"  class="mr-3">
     <ul class="pagination">
       <li class="page-item pr-1" [(ngModel)]="pageIndex"><button (click)="getPreviousPage()" class="btn btn-primary rounded p-1">previous</button></li>
-      <li class="page-item" [(ngModel)]="pageIndex"><button (click)="getNextPage()" class="btn btn-primary rounded p-1">next</button></li>
+      <li class="page-item mr-1" [(ngModel)]="pageIndex"><button (click)="getNextPage()" class="btn btn-primary rounded p-1">next</button></li>
+      <li class="page-item" ><button class="btn btn-primary rounded p-1">{{total}}</button></li>
     </ul>
   </nav>
-
 </div>
 

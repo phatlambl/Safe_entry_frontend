@@ -10,15 +10,22 @@ import {HttpClient, HttpResponse, HttpHeaders} from '@angular/common/http';
 export class UserComponent implements OnInit {
   pageIndex: any;
   count = 0;
-  projectName = "demo"
-
+  projectName = 'demo';
+  total: any;
   constructor(private http: HttpClient) { }
   public data: Object = [];
+  Total: any;
+  PageCount: any;
   ngOnInit(): void {
     const url = '/rest/user/list';
-    this.data = this.http.get(environment.endpoint + url).toPromise().then((data: any) => {
+    const url_count = '/rest/user/list?countOnly=Y';
+    this.http.get(environment.endpoint + url).toPromise().then((data: any) => {
       console.log('user list: ', data);
-      this.data = data;
+      this.data = data.data;
+    });
+    this.http.get(environment.endpoint + url_count).toPromise().then((data: any) => {
+      console.log('count: ', data);
+      this.total = data.totalCount;
     });
     // const Observable = this.http.get(this.api.getListDeviceLogs, options);
   }
@@ -29,7 +36,7 @@ export class UserComponent implements OnInit {
       this.count--;
     }
     this.http.get(environment.endpoint + url + (this.count)).toPromise().then((data: any) => {
-      this.data = data;
+      this.data = data.data;
     });
   }
 
@@ -37,10 +44,11 @@ export class UserComponent implements OnInit {
     const url = '/rest/user/list?page=';
     this.count++;
     this.http.get(environment.endpoint + url + (this.count)).toPromise().then((data: any) => {
-      if (data.length === 0) {
+      console.log('next ', data.data);
+      if (data.data.length === 0) {
         this.count--;
       }
-      this.data = data;
+      this.data = data.data;
     });
   }
 }
