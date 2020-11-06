@@ -1,6 +1,6 @@
 
-<div class="offset-3 col-8">
-  <div class="offset-2 col-md-4" style="margin-bottom: 50px;">
+<div>
+  <div  style="margin-bottom: 50px;">
     <form>
       <div class="form-group">
         <label>Emails separate by ';'</label>
@@ -17,17 +17,17 @@
 <div class="col-md-8">
   <table border="1" class="table table-bordered mt-3">
     <thead class=" table-bordered">
-    <tr style="background: #3CB371; color: #ECF0F1 " class="d-flex">
-      <th class="col-4">Id</th>
-      <th class="col-4">Email</th>
-      <th class="col-4">Max temperature</th>
+    <tr style="background: #3CB371; color: #ECF0F1 ">
+      <th>Id</th>
+      <th>Email</th>
+      <th>Max temperature</th>
     </tr>
     </thead>
   
-    <tr *ngFor="let item of data" class="d-flex">
-      <td style="background: white" class="col-4">{{item.id}} </td>
-      <td class="col-4">{{item.email}}</td>
-      <td class="col-4">{{item.temperature.temperature}}</td>
+    <tr *ngFor="let item of data" >
+      <td style="background: white" >{{item.id}} </td>
+      <td >{{item.email}}</td>
+      <td >{{item.temperature.temperature}}</td>
     </tr>
   </table>
   <nav aria-label="Page navigation example" style="position: absolute;

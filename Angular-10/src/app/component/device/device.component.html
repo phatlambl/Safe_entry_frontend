@@ -1,21 +1,21 @@
-<div class="offset-2 col-8">
+<div >
   <div style="float: right;margin-bottom: 20px;"><button class="btn btn-primary" >Add Device</button></div>
 
 <table border="1" class="table table-bordered">
   <thead class=" table-bordered">
-  <tr style="background: #3CB371; color: #ECF0F1 " class="d-flex">
-    <th class="col-5">
+  <tr style="background: #3CB371; color: #ECF0F1 " >
+    <th >
       Device id
     </th>
-    <th class="col-5">Location</th>
-    <th class="col-2">&nbsp;</th>
+    <th>Location</th>
+    <th>&nbsp;</th>
   </tr>
   </thead>
 
-  <tr *ngFor="let item of data" class="d-flex">
-    <td style="background: white" class="col-5">{{item.id}}</td>
-    <td style="background: white" class="col-5">{{item.location}}</td>
-    <td class="col-2">
+  <tr *ngFor="let item of data" >
+    <td style="background: white">{{item.id}}</td>
+    <td style="background: white">{{item.location}}</td>
+    <td >
          <button class="btn btn-primary">Edit</button> |
 				<button class="btn btn-primary">Delete</button>
     </td>

@@ -11,12 +11,13 @@ export class DeviceComponent implements OnInit {
 
   pageIndex: any;
   count = 0;
+  projectName = "demo";
 
   constructor(private http: HttpClient) { }
   public data: Object = [];
   ngOnInit(): void {
-    const url = '/rest/device/list';
-    this.data = this.http.get(url).toPromise().then((data: any) => {
+    const url =  '/rest/device/list';
+    this.data = this.http.get( this.projectName + url).toPromise().then((data: any) => {
       console.log('user list: ', data.content);
       this.data = data.content;
     });
@@ -28,7 +29,7 @@ export class DeviceComponent implements OnInit {
     if (this.count >= 1) {
       this.count--;
     }
-    this.http.get(url + (this.count)).toPromise().then((data: any) => {
+    this.http.get(this.projectName + url + (this.count)).toPromise().then((data: any) => {
       this.data = data.content;
     });
   }
@@ -36,7 +37,7 @@ export class DeviceComponent implements OnInit {
   getNextPage() {
     const url = '/rest/device/list?page=';
     this.count++;
-    this.http.get(url + (this.count)).toPromise().then((data: any) => {
+    this.http.get(this.projectName + url + (this.count)).toPromise().then((data: any) => {
       if (data.content.length === 0) {
         this.count--;
       }

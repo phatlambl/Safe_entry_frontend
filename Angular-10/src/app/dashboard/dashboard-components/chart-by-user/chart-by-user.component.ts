@@ -23,6 +23,7 @@ export class ChartByUserComponent implements OnInit {
   toTimestamp: any 
   d: any  
   public data: Object = [];
+  projectName = "demo";
 
 
   constructor(private deviceLogByUser: ChartByUserService, private http: HttpClient,
@@ -81,7 +82,7 @@ getTimestampXDayAgo(x: any){
 
   getDeviceLogsByUser(){
     let getChart = "rest/device/list/user?userId=" + this.userId + "&fromTimestamp=" + this.fromTimestamp + "&toTimestamp=" + this.toTimestamp;
-   return this.http.get(getChart).pipe(map(result => result));   
+   return this.http.get(this.projectName + getChart).pipe(map(result => result));   
    }
 
    //get chart

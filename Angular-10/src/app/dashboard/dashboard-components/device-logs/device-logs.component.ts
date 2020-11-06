@@ -22,6 +22,7 @@ export class DeviceLogsComponent implements OnInit {
   rightList: any;
   pageIndex1: any;
   filter: boolean=false;
+  projectName = "demo";
 
   constructor(private svDeviceLogs: DeviceLogServiceService, private http: HttpClient) {
   }
@@ -29,7 +30,7 @@ export class DeviceLogsComponent implements OnInit {
   ngOnInit(): void {
     const url = '/rest/device/list/log';
 
-    const Observable = this.http.get(url).subscribe((response) => {
+    const Observable = this.http.get(this.projectName + url).subscribe((response) => {
       console.log(response);
       this.convertTimeToDate(response)
     });
@@ -57,7 +58,8 @@ export class DeviceLogsComponent implements OnInit {
         temp.deviceId = data.deviceId;
         temp.location = data.location;
         let jsdate = new Date(data.timestamp)
-        temp.date= jsdate.toLocaleString()       
+        temp.date = jsdate.toLocaleDateString()
+        temp.time = jsdate.toLocaleTimeString()    
       
         console.log(temp);    
         myArray.push(temp)
@@ -71,7 +73,7 @@ export class DeviceLogsComponent implements OnInit {
     if (this.count > 1) {
       this.count--;
     }
-    const Observable = this.http.get(url + (this.count)).subscribe((response) => {
+    const Observable = this.http.get(this.projectName + url + (this.count)).subscribe((response) => {
       console.log(response);
       this.convertTimeToDate(response)
     });
@@ -81,7 +83,7 @@ export class DeviceLogsComponent implements OnInit {
   getNextPage() {
     const url = '/rest/device/list/log?page=';
     this.count++;
-    const Observable = this.http.get(url + (this.count)).subscribe((response) => {
+    const Observable = this.http.get(this.projectName + url + (this.count)).subscribe((response) => {
       this.convertTimeToDate(response)
     });   
   }  
@@ -95,4 +97,5 @@ export interface temp {
   deviceId: any,
   location: any,
   date: any
+  time: any
 }

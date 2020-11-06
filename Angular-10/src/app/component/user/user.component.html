@@ -1,22 +1,22 @@
-<div class="offset-2 col-8">
+<div>
   <div style="float: right;margin-bottom: 20px;"><button class="btn btn-primary" >Add User</button></div>
 
   <table border="1" class="table table-bordered">
     <thead class="table-bordered">
-    <tr style="background: #3CB371; color: #ECF0F1 " class="d-flex">
-      <th class="col-3">
+    <tr style="background: #3CB371; color: #ECF0F1 ">
+      <th >
         UUID
       </th>
-      <th class="col-3">Name</th>
-      <th class="col-3">Email</th>
-      <th class="col-3">&nbsp;</th>
+      <th >Name</th>
+      <th >Email</th>
+      <th >&nbsp;</th>
     </tr>
     </thead>
-    <tr *ngFor="let item of data" class="d-flex">
-      <td style="background: white;size: 3px" class="col-3">{{item.id}} </td>
-      <td style="background: white" class="col-3">{{item.name}}</td>
-      <td style="background: white" class="col-3">{{item.email}}</td>
-      <td class="col-4">
+    <tr *ngFor="let item of data" >
+      <td style="background: white;size: 3px" >{{item.id}} </td>
+      <td style="background: white" >{{item.name}}</td>
+      <td style="background: white">{{item.email}}</td>
+      <td >
           <button class="btn btn-primary">Edit</button> |
         <button class="btn btn-primary">Delete</button>
      </td>
